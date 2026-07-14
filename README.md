@@ -23,6 +23,14 @@ Intended to be deployed independently of the frontend (e.g. DigitalOcean).
 Swap the SQLite dev database for Postgres/MySQL in `config/database.ts` for
 production.
 
+## CI / Claude Code
+
+- `.github/workflows/ci.yml` — installs deps, type-checks, and builds the
+  admin panel on every push/PR.
+- `.github/workflows/claude.yml` — lets you trigger Claude Code from an
+  issue or PR comment containing `@claude`. Requires an `ANTHROPIC_API_KEY`
+  secret to be added under repo Settings → Secrets and variables → Actions.
+
 ---
 
 # 🚀 Getting started with Strapi
