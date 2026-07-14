@@ -1,3 +1,30 @@
+# Bayan Signage — Backend (Strapi)
+
+Content management and API backend for Bayan Signage. Manages Screens
+(each with an auto-generated pairing code) and Playlists (an ordered list
+of media items with per-item durations). The
+[bayan-signage-frontend](../bayan-signage-frontend) player app reads from
+this API to know what to display on each screen.
+
+## Content types
+
+- **Screen** — `name`, `location`, `pairingCode` (unique, auto-generated on
+  create if left blank), `lastSeenAt`, `playlist` (relation).
+- **Playlist** — `name`, `items` (repeatable `signage.playlist-item`
+  component: `media` + `durationSecs`).
+
+Public (unauthenticated) read access to `find`/`findOne` on both content
+types is granted automatically on startup (see `src/index.ts`) so the
+player frontend can fetch a screen's playlist without auth.
+
+## Deployment
+
+Intended to be deployed independently of the frontend (e.g. DigitalOcean).
+Swap the SQLite dev database for Postgres/MySQL in `config/database.ts` for
+production.
+
+---
+
 # 🚀 Getting started with Strapi
 
 Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.
