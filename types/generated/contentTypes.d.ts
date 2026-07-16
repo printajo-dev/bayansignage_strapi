@@ -483,70 +483,6 @@ export interface ApiLeadLead extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiPlaylistPlaylist extends Struct.CollectionTypeSchema {
-  collectionName: 'playlists';
-  info: {
-    description: 'An ordered list of media items to display on a screen';
-    displayName: 'Playlist';
-    pluralName: 'playlists';
-    singularName: 'playlist';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    items: Schema.Attribute.Component<'signage.playlist-item', true>;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::playlist.playlist'
-    > &
-      Schema.Attribute.Private;
-    name: Schema.Attribute.String & Schema.Attribute.Required;
-    publishedAt: Schema.Attribute.DateTime;
-    screens: Schema.Attribute.Relation<'oneToMany', 'api::screen.screen'>;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiScreenScreen extends Struct.CollectionTypeSchema {
-  collectionName: 'screens';
-  info: {
-    description: 'A physical signage display that plays an assigned playlist';
-    displayName: 'Screen';
-    pluralName: 'screens';
-    singularName: 'screen';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    lastSeenAt: Schema.Attribute.DateTime;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::screen.screen'
-    > &
-      Schema.Attribute.Private;
-    location: Schema.Attribute.String;
-    name: Schema.Attribute.String & Schema.Attribute.Required;
-    pairingCode: Schema.Attribute.String & Schema.Attribute.Unique;
-    playlist: Schema.Attribute.Relation<'manyToOne', 'api::playlist.playlist'>;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -1059,8 +995,6 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::lead.lead': ApiLeadLead;
-      'api::playlist.playlist': ApiPlaylistPlaylist;
-      'api::screen.screen': ApiScreenScreen;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

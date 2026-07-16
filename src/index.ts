@@ -1,8 +1,6 @@
 import type { Core } from '@strapi/strapi';
 
 const PUBLIC_PERMISSIONS: Record<string, string[]> = {
-  screen: ['find', 'findOne'],
-  playlist: ['find', 'findOne'],
   lead: ['create'],
 };
 

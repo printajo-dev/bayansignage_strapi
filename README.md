@@ -1,96 +1,77 @@
 # Bayan Signage — Backend (Strapi)
 
-Content management and API backend for Bayan Signage. Manages Screens
-(each with an auto-generated pairing code) and Playlists (an ordered list
-of media items with per-item durations). The
-[bayan-signage-frontend](../bayan-signage-frontend) player app reads from
-this API to know what to display on each screen.
+Headless CMS backend for the [bayan-signage-frontend](https://github.com/printajo-dev/bayan-signage)
+marketing site. Its job is small and specific: receive lead-form
+submissions from the website, store them, and forward them onward.
 
 ## Content types
 
-- **Screen** — `name`, `location`, `pairingCode` (unique, auto-generated on
-  create if left blank), `lastSeenAt`, `playlist` (relation).
-- **Playlist** — `name`, `items` (repeatable `signage.playlist-item`
-  component: `media` + `durationSecs`).
+- **Lead** (`src/api/lead/`) — the only content type public API consumers
+  touch. Public (unauthenticated) `create` access only — see
+  `src/index.ts`. Fields: `name`, `email`, `phone`, `message`,
+  `serviceInterest`, `sourcePage`, `formName`, plus tracking fields
+  (`status`, `crmSyncStatus`, `crmSyncError`, `emailNotified`).
+- Leads are visible and manageable in the Strapi admin panel
+  (`/admin` → Content Manager → Lead) — there is no separate admin app.
 
-Public (unauthenticated) read access to `find`/`findOne` on both content
-types is granted automatically on startup (see `src/index.ts`) so the
-player frontend can fetch a screen's playlist without auth.
+## Lead lifecycle (`src/api/lead/content-types/lead/lifecycles.ts`)
+
+On every `afterCreate`, in parallel:
+
+- **`services/notify-email.ts`** — emails the team via Brevo SMTP relay.
+  Skips gracefully (logs a warning, doesn't throw) if `BREVO_SMTP_*` env
+  vars aren't set.
+- **`services/perfex-sync.ts`** — pushes the lead to Perfex CRM via its
+  REST API. Skips gracefully if `PERFEX_API_*` env vars aren't set.
+
+The lead record is then updated with `emailNotified` / `crmSyncStatus` /
+`crmSyncError` so you can see in the admin panel whether each integration
+actually fired. Both integrations are optional at runtime — the site works
+and stores leads even with none of the `BREVO_*`/`PERFEX_*` vars configured.
+
+## Environment variables
+
+See `.env.example`. Required: the Strapi secrets (`APP_KEYS`,
+`API_TOKEN_SALT`, etc. — generate real values, don't ship the placeholder
+ones). Optional: `BREVO_SMTP_*` / `LEAD_NOTIFY_*` for email notification,
+`PERFEX_API_*` for CRM sync.
+
+## Getting started
+
+```bash
+npm install
+cp .env.example .env   # fill in real secrets
+npm run develop
+```
+
+Admin panel: `http://localhost:1337/admin` (first run prompts you to
+create an admin account).
 
 ## Deployment
 
-Intended to be deployed independently of the frontend (e.g. DigitalOcean).
-Swap the SQLite dev database for Postgres/MySQL in `config/database.ts` for
-production.
+Deployed independently of the frontend. Swap the SQLite dev database for
+Postgres/MySQL in `config/database.ts` for production, and set all
+`.env.example` variables as real secrets on the host (never commit real
+values). The frontend needs this backend's public URL set as its
+`NEXT_PUBLIC_STRAPI_URL`.
 
-## CI / Claude Code
+## CI / Claude Code / Copilot
 
 - `.github/workflows/ci.yml` — installs deps, type-checks, and builds the
   admin panel on every push/PR.
 - `.github/workflows/claude.yml` — lets you trigger Claude Code from an
   issue or PR comment containing `@claude`. Requires an `ANTHROPIC_API_KEY`
-  secret to be added under repo Settings → Secrets and variables → Actions.
+  repo secret.
+- `.github/copilot-instructions.md` — repo-specific context for GitHub
+  Copilot Chat and the Copilot coding agent.
 
 ---
 
-# 🚀 Getting started with Strapi
+# Strapi CLI reference
 
-Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.
+- `npm run develop` — start with autoReload enabled.
+- `npm run start` — start with autoReload disabled (production mode).
+- `npm run build` — build the admin panel.
 
-### `develop`
-
-Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-develop)
-
-```
-npm run develop
-# or
-yarn develop
-```
-
-### `start`
-
-Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-start)
-
-```
-npm run start
-# or
-yarn start
-```
-
-### `build`
-
-Build your admin panel. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-build)
-
-```
-npm run build
-# or
-yarn build
-```
-
-## ⚙️ Deployment
-
-Strapi gives you many possible deployment options for your project including [Strapi Cloud](https://cloud.strapi.io). Browse the [deployment section of the documentation](https://docs.strapi.io/dev-docs/deployment) to find the best solution for your use case.
-
-```
-yarn strapi deploy
-```
-
-## 📚 Learn more
-
-- [Resource center](https://strapi.io/resource-center) - Strapi resource center.
-- [Strapi documentation](https://docs.strapi.io) - Official Strapi documentation.
-- [Strapi tutorials](https://strapi.io/tutorials) - List of tutorials made by the core team and the community.
-- [Strapi blog](https://strapi.io/blog) - Official Strapi blog containing articles made by the Strapi team and the community.
-- [Changelog](https://strapi.io/changelog) - Find out about the Strapi product updates, new features and general improvements.
-
-Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/strapi). Your feedback and contributions are welcome!
-
-## ✨ Community
-
-- [Discord](https://discord.strapi.io) - Come chat with the Strapi community including the core team.
-- [Forum](https://forum.strapi.io/) - Place to discuss, ask questions and find answers, show your Strapi project and get feedback or just talk with other Community members.
-- [Awesome Strapi](https://github.com/strapi/awesome-strapi) - A curated list of awesome things related to Strapi.
-
----
-
-<sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
+See the [Strapi docs](https://docs.strapi.io) for the full CLI and
+deployment guide.
