@@ -50,10 +50,23 @@ create an admin account).
 ## Deployment
 
 Deployed independently of the frontend. Swap the SQLite dev database for
-Postgres/MySQL in `config/database.ts` for production, and set all
+Postgres in production (see `config/database.ts` — already reads
+`DATABASE_CLIENT`/`DATABASE_URL` from env, `pg` is already a dependency)
+since SQLite doesn't survive hosts with an ephemeral filesystem. Set all
 `.env.example` variables as real secrets on the host (never commit real
 values). The frontend needs this backend's public URL set as its
-`NEXT_PUBLIC_STRAPI_URL`.
+`NEXT_PUBLIC_STRAPI_URL`, and this backend needs the frontend's URL set as
+`CORS_ALLOWED_ORIGINS`.
+
+**DigitalOcean App Platform** (`.do/app.yaml`): App Platform dashboard →
+Create App → select this GitHub repo → it picks up `.do/app.yaml`
+automatically, including a bound managed Postgres database.
+`deploy_on_push: true` in that spec means every `git push` to `main`
+triggers a new build and deploy automatically — no extra CI step needed.
+Before the first deploy, replace every `REPLACE_ME` secret value in the
+spec (Strapi's core secrets — generate each with `node -e
+"console.log(require('crypto').randomBytes(16).toString('base64'))"`) and
+set `CORS_ALLOWED_ORIGINS` to the frontend's real domain.
 
 ## CI / Claude Code / Copilot
 

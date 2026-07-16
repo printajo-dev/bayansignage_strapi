@@ -1,16 +1,23 @@
 import type { Core } from '@strapi/strapi';
 
-const config: Core.Config.Middlewares = [
-  'strapi::logger',
-  'strapi::errors',
-  'strapi::security',
-  'strapi::cors',
-  'strapi::poweredBy',
-  'strapi::query',
-  'strapi::body',
-  'strapi::session',
-  'strapi::favicon',
-  'strapi::public',
-];
+export default ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Middlewares => {
+  const allowedOrigins = env.array('CORS_ALLOWED_ORIGINS', ['*']);
 
-export default config;
+  return [
+    'strapi::logger',
+    'strapi::errors',
+    'strapi::security',
+    {
+      name: 'strapi::cors',
+      config: {
+        origin: allowedOrigins,
+      },
+    },
+    'strapi::poweredBy',
+    'strapi::query',
+    'strapi::body',
+    'strapi::session',
+    'strapi::favicon',
+    'strapi::public',
+  ];
+};
