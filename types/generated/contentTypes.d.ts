@@ -441,6 +441,48 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiLeadLead extends Struct.CollectionTypeSchema {
+  collectionName: 'leads';
+  info: {
+    description: 'A contact/quote form submission from the marketing site';
+    displayName: 'Lead';
+    pluralName: 'leads';
+    singularName: 'lead';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    crmSyncError: Schema.Attribute.Text;
+    crmSyncStatus: Schema.Attribute.Enumeration<
+      ['pending', 'synced', 'failed', 'skipped']
+    > &
+      Schema.Attribute.DefaultTo<'pending'>;
+    email: Schema.Attribute.Email & Schema.Attribute.Required;
+    emailNotified: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    formName: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::lead.lead'> &
+      Schema.Attribute.Private;
+    message: Schema.Attribute.Text;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    phone: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    serviceInterest: Schema.Attribute.String;
+    sourcePage: Schema.Attribute.String;
+    status: Schema.Attribute.Enumeration<
+      ['new', 'contacted', 'qualified', 'converted', 'closed']
+    > &
+      Schema.Attribute.DefaultTo<'new'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPlaylistPlaylist extends Struct.CollectionTypeSchema {
   collectionName: 'playlists';
   info: {
@@ -1016,6 +1058,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::lead.lead': ApiLeadLead;
       'api::playlist.playlist': ApiPlaylistPlaylist;
       'api::screen.screen': ApiScreenScreen;
       'plugin::content-releases.release': PluginContentReleasesRelease;

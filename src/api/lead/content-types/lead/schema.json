@@ -1,0 +1,56 @@
+{
+  "kind": "collectionType",
+  "collectionName": "leads",
+  "info": {
+    "singularName": "lead",
+    "pluralName": "leads",
+    "displayName": "Lead",
+    "description": "A contact/quote form submission from the marketing site"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "phone": {
+      "type": "string"
+    },
+    "message": {
+      "type": "text"
+    },
+    "serviceInterest": {
+      "type": "string"
+    },
+    "sourcePage": {
+      "type": "string"
+    },
+    "formName": {
+      "type": "string"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["new", "contacted", "qualified", "converted", "closed"],
+      "default": "new"
+    },
+    "crmSyncStatus": {
+      "type": "enumeration",
+      "enum": ["pending", "synced", "failed", "skipped"],
+      "default": "pending"
+    },
+    "crmSyncError": {
+      "type": "text"
+    },
+    "emailNotified": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}
