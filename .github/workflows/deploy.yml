@@ -1,0 +1,45 @@
+name: Deploy to Droplet
+
+# Runs after every push to main that CI has approved, and can also be
+# triggered manually. SSHs into the backend droplet, pulls the latest
+# code, rebuilds, and reloads the PM2 process -- this is what makes a
+# `git push` to main go live automatically once the droplet is set up
+# (see DEPLOYMENT.md) and the secrets below are configured in the repo's
+# Settings -> Secrets and variables -> Actions.
+#
+# Required secrets:
+#   DROPLET_HOST      - the droplet's IP address or hostname
+#   DROPLET_USER      - SSH user (e.g. root or a deploy user)
+#   DROPLET_SSH_KEY   - private key with access to that user
+#   DROPLET_PORT      - optional, defaults to 22
+#
+# This is a separate droplet from the frontend's -- see the frontend
+# repo's own deploy.yml and secrets for that side.
+
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch: {}
+
+jobs:
+  deploy:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy over SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.DROPLET_HOST }}
+          username: ${{ secrets.DROPLET_USER }}
+          key: ${{ secrets.DROPLET_SSH_KEY }}
+          port: ${{ secrets.DROPLET_PORT || 22 }}
+          script: |
+            set -e
+            cd /var/www/bayansignage-strapi
+            git fetch origin main
+            git reset --hard origin/main
+            npm ci
+            npm run build
+            pm2 reload bayansignage-strapi

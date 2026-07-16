@@ -49,29 +49,34 @@ create an admin account).
 
 ## Deployment
 
-Deployed independently of the frontend. Swap the SQLite dev database for
-Postgres in production (see `config/database.ts` — already reads
-`DATABASE_CLIENT`/`DATABASE_URL` from env, `pg` is already a dependency)
-since SQLite doesn't survive hosts with an ephemeral filesystem. Set all
-`.env.example` variables as real secrets on the host (never commit real
-values). The frontend needs this backend's public URL set as its
-`NEXT_PUBLIC_STRAPI_URL`, and this backend needs the frontend's URL set as
-`CORS_ALLOWED_ORIGINS`.
+Deployed independently of the frontend, to its own droplet.
 
-**DigitalOcean App Platform** (`.do/app.yaml`): App Platform dashboard →
-Create App → select this GitHub repo → it picks up `.do/app.yaml`
-automatically, including a bound managed Postgres database.
-`deploy_on_push: true` in that spec means every `git push` to `main`
-triggers a new build and deploy automatically — no extra CI step needed.
-Before the first deploy, replace every `REPLACE_ME` secret value in the
-spec (Strapi's core secrets — generate each with `node -e
-"console.log(require('crypto').randomBytes(16).toString('base64'))"`) and
-set `CORS_ALLOWED_ORIGINS` to the frontend's real domain.
+**Primary target: a dedicated DigitalOcean droplet.** Full step-by-step
+instructions, an automated bootstrap script (installs Node, Postgres,
+Nginx, Certbot, PM2), the Nginx config, and the PM2 process definition are
+in **[DEPLOYMENT.md](./DEPLOYMENT.md)** and the `deploy/` folder.
+`.github/workflows/deploy.yml` SSHes in and redeploys automatically on
+every push to `main` once the droplet is set up and its secrets are added
+to the repo — see DEPLOYMENT.md for the exact steps.
 
-## CI / Claude Code / Copilot
+Swap the SQLite dev database for Postgres in production (see
+`config/database.ts` — already reads `DATABASE_CLIENT`/`DATABASE_URL` from
+env, `pg` is already a dependency) since SQLite doesn't handle concurrent
+writes well under real traffic. Set all `.env.example` variables as real
+secrets on the host (never commit real values). The frontend needs this
+backend's public URL set as its `NEXT_PUBLIC_STRAPI_URL`, and this backend
+needs the frontend's URL set as `CORS_ALLOWED_ORIGINS`.
+
+**DigitalOcean App Platform** is documented as an alternative in
+`.do/app.yaml` if you'd rather use a managed PaaS (with a bound managed
+Postgres database) instead of a droplet.
+
+## CI / CD / Copilot
 
 - `.github/workflows/ci.yml` — installs deps, type-checks, and builds the
   admin panel on every push/PR.
+- `.github/workflows/deploy.yml` — deploys to the production droplet over
+  SSH after CI passes on `main`. See [DEPLOYMENT.md](./DEPLOYMENT.md).
 - `.github/workflows/claude.yml` — lets you trigger Claude Code from an
   issue or PR comment containing `@claude`. Requires an `ANTHROPIC_API_KEY`
   repo secret.
