@@ -1,3 +1,4 @@
-# To prevent search engines from seeing the site altogether, uncomment the next two lines:
-# User-Agent: *
-# Disallow: /
+# This is the Strapi admin panel and API for bayansignage.com -- not a
+# public content site. Block it entirely from crawlers.
+User-Agent: *
+Disallow: /
