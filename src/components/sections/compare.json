@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_sections_compares",
+  "info": {
+    "displayName": "Compare",
+    "icon": "grid"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "intro": {
+      "type": "text",
+      "required": true
+    },
+    "headers": {
+      "type": "json",
+      "required": true
+    },
+    "rows": {
+      "type": "component",
+      "component": "shared.compare-row",
+      "repeatable": true,
+      "required": true
+    }
+  }
+}

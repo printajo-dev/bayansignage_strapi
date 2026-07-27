@@ -2,6 +2,9 @@ import type { Core } from '@strapi/strapi';
 
 const PUBLIC_PERMISSIONS: Record<string, string[]> = {
   lead: ['create'],
+  global: ['find'],
+  navigation: ['find'],
+  'service-page': ['find', 'findOne'],
 };
 
 async function setPublicPermissions(strapi: Core.Strapi) {

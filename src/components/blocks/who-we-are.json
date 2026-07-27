@@ -1,0 +1,48 @@
+{
+  "collectionName": "components_blocks_who_we_ares",
+  "info": {
+    "displayName": "Who We Are",
+    "icon": "user"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "titleLine1": {
+      "type": "string",
+      "required": true
+    },
+    "titleLine2": {
+      "type": "string",
+      "required": true
+    },
+    "paragraphs": {
+      "type": "component",
+      "component": "shared.text-item",
+      "repeatable": true,
+      "required": false
+    },
+    "checklist": {
+      "type": "component",
+      "component": "shared.text-item",
+      "repeatable": true,
+      "required": false
+    },
+    "img": {
+      "type": "string",
+      "required": true
+    },
+    "imgAlt": {
+      "type": "string",
+      "required": true
+    },
+    "badges": {
+      "type": "component",
+      "component": "shared.stat",
+      "repeatable": true,
+      "required": false
+    }
+  }
+}

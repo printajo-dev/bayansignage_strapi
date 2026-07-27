@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_shared_height_items",
+  "info": {
+    "displayName": "Height Item",
+    "icon": "arrowUp"
+  },
+  "options": {},
+  "attributes": {
+    "m": {
+      "type": "string",
+      "required": true
+    },
+    "barHeight": {
+      "type": "integer",
+      "required": true
+    },
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "desc": {
+      "type": "text"
+    }
+  }
+}

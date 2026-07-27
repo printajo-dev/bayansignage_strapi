@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_shared_title_descs",
+  "info": {
+    "displayName": "Title + Description",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "desc": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

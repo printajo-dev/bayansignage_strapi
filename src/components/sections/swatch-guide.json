@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_sections_swatch_guides",
+  "info": {
+    "displayName": "Swatch Guide",
+    "icon": "palette"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "intro": {
+      "type": "text",
+      "required": true
+    },
+    "items": {
+      "type": "component",
+      "component": "shared.swatch-item",
+      "repeatable": true,
+      "required": true
+    }
+  }
+}

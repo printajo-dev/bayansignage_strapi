@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_sections_dark_callouts",
+  "info": {
+    "displayName": "Dark Callout",
+    "icon": "priceTag"
+  },
+  "options": {},
+  "attributes": {
+    "badge": {
+      "type": "string",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "paragraphs": {
+      "type": "component",
+      "component": "shared.text-item",
+      "repeatable": true,
+      "required": false
+    },
+    "items": {
+      "type": "component",
+      "component": "shared.dark-callout-item",
+      "repeatable": true,
+      "required": true
+    }
+  }
+}

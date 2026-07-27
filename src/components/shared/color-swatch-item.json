@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_shared_color_swatch_items",
+  "info": {
+    "displayName": "Color Swatch Item",
+    "icon": "palette"
+  },
+  "options": {},
+  "attributes": {
+    "color": {
+      "type": "string",
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

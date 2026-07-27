@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_sections_color_tables",
+  "info": {
+    "displayName": "Color Table",
+    "icon": "grid"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "intro": {
+      "type": "text",
+      "required": true
+    },
+    "headers": {
+      "type": "json",
+      "required": true
+    },
+    "rows": {
+      "type": "component",
+      "component": "shared.color-table-row",
+      "repeatable": true,
+      "required": true
+    }
+  }
+}

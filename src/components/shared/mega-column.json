@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_shared_mega_columns",
+  "info": {
+    "displayName": "Mega Column",
+    "icon": "layout"
+  },
+  "options": {},
+  "attributes": {
+    "headHref": {
+      "type": "string",
+      "required": true
+    },
+    "headLabel": {
+      "type": "string",
+      "required": true
+    },
+    "icon": {
+      "type": "string",
+      "required": true
+    },
+    "links": {
+      "type": "component",
+      "component": "shared.mega-link",
+      "repeatable": true,
+      "required": false
+    }
+  }
+}

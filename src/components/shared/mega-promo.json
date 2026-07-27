@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_shared_mega_promos",
+  "info": {
+    "displayName": "Mega Promo",
+    "icon": "megaphone"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "sub": {
+      "type": "string",
+      "required": true
+    },
+    "href": {
+      "type": "string",
+      "required": true
+    },
+    "linkLabel": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

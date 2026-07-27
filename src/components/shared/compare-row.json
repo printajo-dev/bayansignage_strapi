@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_shared_compare_rows",
+  "info": {
+    "displayName": "Compare Row",
+    "icon": "grid"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "values": {
+      "type": "json",
+      "required": true
+    }
+  }
+}

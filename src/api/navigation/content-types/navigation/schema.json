@@ -1,0 +1,80 @@
+{
+  "kind": "singleType",
+  "collectionName": "navigation",
+  "info": {
+    "singularName": "navigation",
+    "pluralName": "navigations",
+    "displayName": "Navigation",
+    "description": "Header mega-menu, mobile menu, and footer link structure"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "outdoorMegaColumns": {
+      "type": "component",
+      "component": "shared.mega-column",
+      "repeatable": true,
+      "required": true
+    },
+    "outdoorPromo": {
+      "type": "component",
+      "component": "shared.mega-promo",
+      "repeatable": false,
+      "required": true
+    },
+    "indoorMegaColumns": {
+      "type": "component",
+      "component": "shared.mega-column",
+      "repeatable": true,
+      "required": true
+    },
+    "indoorPromo": {
+      "type": "component",
+      "component": "shared.mega-promo",
+      "repeatable": false,
+      "required": true
+    },
+    "mobileOutdoor": {
+      "type": "component",
+      "component": "shared.mega-link",
+      "repeatable": true,
+      "required": true
+    },
+    "mobileIndoor": {
+      "type": "component",
+      "component": "shared.mega-link",
+      "repeatable": true,
+      "required": true
+    },
+    "mobileCompany": {
+      "type": "component",
+      "component": "shared.mega-link",
+      "repeatable": true,
+      "required": true
+    },
+    "footerOutdoorLinks": {
+      "type": "component",
+      "component": "shared.mega-link",
+      "repeatable": true,
+      "required": true
+    },
+    "footerIndoorLinks": {
+      "type": "component",
+      "component": "shared.mega-link",
+      "repeatable": true,
+      "required": true
+    },
+    "footerCompanyLinks": {
+      "type": "component",
+      "component": "shared.mega-link",
+      "repeatable": true,
+      "required": true
+    },
+    "footerTagline": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_shared_pricing_items",
+  "info": {
+    "displayName": "Pricing Item",
+    "icon": "money"
+  },
+  "options": {},
+  "attributes": {
+    "range": {
+      "type": "string",
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "desc": {
+      "type": "text",
+      "required": true
+    },
+    "note": {
+      "type": "string"
+    },
+    "noteVariant": {
+      "type": "enumeration",
+      "enum": [
+        "muted",
+        "positive"
+      ],
+      "default": "muted"
+    }
+  }
+}

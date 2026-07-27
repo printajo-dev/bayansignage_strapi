@@ -1,0 +1,162 @@
+{
+  "kind": "collectionType",
+  "collectionName": "service_pages",
+  "info": {
+    "singularName": "service-page",
+    "pluralName": "service-pages",
+    "displayName": "Service Page",
+    "description": "One of the 26 individual outdoor/indoor signage service pages"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "slug": {
+      "type": "uid",
+      "required": true
+    },
+    "parentLabel": {
+      "type": "enumeration",
+      "enum": ["Outdoor Signage", "Indoor Signage"],
+      "required": true
+    },
+    "parentHref": {
+      "type": "enumeration",
+      "enum": ["/outdoor-signage/", "/indoor-signage/"],
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "metaTitle": {
+      "type": "string",
+      "required": true
+    },
+    "metaDescription": {
+      "type": "text",
+      "required": true
+    },
+    "heroFlag": {
+      "type": "string",
+      "required": true
+    },
+    "heroTitleLine1": {
+      "type": "string",
+      "required": true
+    },
+    "heroTitleLine2": {
+      "type": "string",
+      "required": true
+    },
+    "heroSub": {
+      "type": "text",
+      "required": true
+    },
+    "heroImg": {
+      "type": "string",
+      "required": true
+    },
+    "heroImgAlt": {
+      "type": "string",
+      "required": true
+    },
+    "heroStats": {
+      "type": "component",
+      "component": "shared.stat",
+      "repeatable": true,
+      "required": true
+    },
+    "heroChecklist": {
+      "type": "component",
+      "component": "shared.text-item",
+      "repeatable": true
+    },
+    "specs": {
+      "type": "component",
+      "component": "shared.spec-item",
+      "repeatable": true,
+      "required": true
+    },
+    "whoWeAre": {
+      "type": "component",
+      "component": "blocks.who-we-are",
+      "repeatable": false
+    },
+    "types": {
+      "type": "component",
+      "component": "blocks.types-section",
+      "repeatable": false,
+      "required": true
+    },
+    "sections": {
+      "type": "dynamiczone",
+      "components": [
+        "sections.heights",
+        "sections.info-grid",
+        "sections.dark-callout",
+        "sections.color-table",
+        "sections.swatch-guide",
+        "sections.stat-callout",
+        "sections.color-swatches",
+        "sections.spec-grid",
+        "sections.permits",
+        "sections.lighting-options",
+        "sections.pricing",
+        "sections.materials",
+        "sections.compare",
+        "sections.uses",
+        "sections.climate",
+        "sections.sectors"
+      ]
+    },
+    "process": {
+      "type": "component",
+      "component": "blocks.process-section",
+      "repeatable": false,
+      "required": true
+    },
+    "why": {
+      "type": "component",
+      "component": "blocks.why-section",
+      "repeatable": false,
+      "required": true
+    },
+    "testimonials": {
+      "type": "component",
+      "component": "blocks.testimonials-section",
+      "repeatable": false
+    },
+    "locations": {
+      "type": "component",
+      "component": "blocks.locations-section",
+      "repeatable": false
+    },
+    "related": {
+      "type": "component",
+      "component": "shared.related-item",
+      "repeatable": true
+    },
+    "faqCol1": {
+      "type": "component",
+      "component": "shared.faq-item",
+      "repeatable": true,
+      "required": true
+    },
+    "faqCol2": {
+      "type": "component",
+      "component": "shared.faq-item",
+      "repeatable": true,
+      "required": true
+    },
+    "ctaTitleLine1": {
+      "type": "string",
+      "required": true
+    },
+    "ctaTitleLine2": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_sections_spec_grids",
+  "info": {
+    "displayName": "Spec Grid",
+    "icon": "grid"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "intro": {
+      "type": "text",
+      "required": true
+    },
+    "items": {
+      "type": "component",
+      "component": "shared.spec-item",
+      "repeatable": true,
+      "required": true
+    }
+  }
+}

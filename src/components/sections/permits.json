@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_sections_permitss",
+  "info": {
+    "displayName": "Permits",
+    "icon": "shield"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "intro": {
+      "type": "text",
+      "required": true
+    },
+    "items": {
+      "type": "component",
+      "component": "shared.named-item",
+      "repeatable": true,
+      "required": true
+    }
+  }
+}

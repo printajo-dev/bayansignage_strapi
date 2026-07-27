@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_shared_color_table_rows",
+  "info": {
+    "displayName": "Color Table Row",
+    "icon": "grid"
+  },
+  "options": {},
+  "attributes": {
+    "color": {
+      "type": "string",
+      "required": true
+    },
+    "cells": {
+      "type": "json",
+      "required": true
+    }
+  }
+}

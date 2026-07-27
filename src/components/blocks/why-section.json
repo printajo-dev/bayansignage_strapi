@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_blocks_why_sections",
+  "info": {
+    "displayName": "Why Section",
+    "icon": "star"
+  },
+  "options": {},
+  "attributes": {
+    "titleLine1": {
+      "type": "string",
+      "required": true
+    },
+    "titleLine2Prefix": {
+      "type": "string"
+    },
+    "titleLine2Em": {
+      "type": "string",
+      "required": true
+    },
+    "intro": {
+      "type": "text",
+      "required": true
+    },
+    "items": {
+      "type": "component",
+      "component": "shared.title-desc",
+      "repeatable": true,
+      "required": true
+    }
+  }
+}

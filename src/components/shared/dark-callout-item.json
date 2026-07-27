@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_shared_dark_callout_items",
+  "info": {
+    "displayName": "Dark Callout Item",
+    "icon": "priceTag"
+  },
+  "options": {},
+  "attributes": {
+    "num": {
+      "type": "string"
+    },
+    "lead": {
+      "type": "string",
+      "required": true
+    },
+    "text": {
+      "type": "text",
+      "required": true
+    },
+    "color": {
+      "type": "string"
+    }
+  }
+}

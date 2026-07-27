@@ -441,6 +441,44 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
+  collectionName: 'global';
+  info: {
+    description: 'Site-wide business info used across every page (phone, email, address, socials)';
+    displayName: 'Global Settings';
+    pluralName: 'globals';
+    singularName: 'global';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    address: Schema.Attribute.String & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.Email & Schema.Attribute.Required;
+    facebook: Schema.Attribute.String;
+    hours: Schema.Attribute.String & Schema.Attribute.Required;
+    instagram: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::global.global'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    phone: Schema.Attribute.String & Schema.Attribute.Required;
+    phoneHref: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    siteOrigin: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    whatsappNumber: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface ApiLeadLead extends Struct.CollectionTypeSchema {
   collectionName: 'leads';
   info: {
@@ -480,6 +518,145 @@ export interface ApiLeadLead extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+  };
+}
+
+export interface ApiNavigationNavigation extends Struct.SingleTypeSchema {
+  collectionName: 'navigation';
+  info: {
+    description: 'Header mega-menu, mobile menu, and footer link structure';
+    displayName: 'Navigation';
+    pluralName: 'navigations';
+    singularName: 'navigation';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    footerCompanyLinks: Schema.Attribute.Component<'shared.mega-link', true> &
+      Schema.Attribute.Required;
+    footerIndoorLinks: Schema.Attribute.Component<'shared.mega-link', true> &
+      Schema.Attribute.Required;
+    footerOutdoorLinks: Schema.Attribute.Component<'shared.mega-link', true> &
+      Schema.Attribute.Required;
+    footerTagline: Schema.Attribute.Text & Schema.Attribute.Required;
+    indoorMegaColumns: Schema.Attribute.Component<'shared.mega-column', true> &
+      Schema.Attribute.Required;
+    indoorPromo: Schema.Attribute.Component<'shared.mega-promo', false> &
+      Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::navigation.navigation'
+    > &
+      Schema.Attribute.Private;
+    mobileCompany: Schema.Attribute.Component<'shared.mega-link', true> &
+      Schema.Attribute.Required;
+    mobileIndoor: Schema.Attribute.Component<'shared.mega-link', true> &
+      Schema.Attribute.Required;
+    mobileOutdoor: Schema.Attribute.Component<'shared.mega-link', true> &
+      Schema.Attribute.Required;
+    outdoorMegaColumns: Schema.Attribute.Component<'shared.mega-column', true> &
+      Schema.Attribute.Required;
+    outdoorPromo: Schema.Attribute.Component<'shared.mega-promo', false> &
+      Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiServicePageServicePage extends Struct.CollectionTypeSchema {
+  collectionName: 'service_pages';
+  info: {
+    description: 'One of the 26 individual outdoor/indoor signage service pages';
+    displayName: 'Service Page';
+    pluralName: 'service-pages';
+    singularName: 'service-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    ctaTitleLine1: Schema.Attribute.String & Schema.Attribute.Required;
+    ctaTitleLine2: Schema.Attribute.String & Schema.Attribute.Required;
+    faqCol1: Schema.Attribute.Component<'shared.faq-item', true> &
+      Schema.Attribute.Required;
+    faqCol2: Schema.Attribute.Component<'shared.faq-item', true> &
+      Schema.Attribute.Required;
+    heroChecklist: Schema.Attribute.Component<'shared.text-item', true>;
+    heroFlag: Schema.Attribute.String & Schema.Attribute.Required;
+    heroImg: Schema.Attribute.String & Schema.Attribute.Required;
+    heroImgAlt: Schema.Attribute.String & Schema.Attribute.Required;
+    heroStats: Schema.Attribute.Component<'shared.stat', true> &
+      Schema.Attribute.Required;
+    heroSub: Schema.Attribute.Text & Schema.Attribute.Required;
+    heroTitleLine1: Schema.Attribute.String & Schema.Attribute.Required;
+    heroTitleLine2: Schema.Attribute.String & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::service-page.service-page'
+    > &
+      Schema.Attribute.Private;
+    locations: Schema.Attribute.Component<'blocks.locations-section', false>;
+    metaDescription: Schema.Attribute.Text & Schema.Attribute.Required;
+    metaTitle: Schema.Attribute.String & Schema.Attribute.Required;
+    parentHref: Schema.Attribute.Enumeration<
+      ['/outdoor-signage/', '/indoor-signage/']
+    > &
+      Schema.Attribute.Required;
+    parentLabel: Schema.Attribute.Enumeration<
+      ['Outdoor Signage', 'Indoor Signage']
+    > &
+      Schema.Attribute.Required;
+    process: Schema.Attribute.Component<'blocks.process-section', false> &
+      Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    related: Schema.Attribute.Component<'shared.related-item', true>;
+    sections: Schema.Attribute.DynamicZone<
+      [
+        'sections.heights',
+        'sections.info-grid',
+        'sections.dark-callout',
+        'sections.color-table',
+        'sections.swatch-guide',
+        'sections.stat-callout',
+        'sections.color-swatches',
+        'sections.spec-grid',
+        'sections.permits',
+        'sections.lighting-options',
+        'sections.pricing',
+        'sections.materials',
+        'sections.compare',
+        'sections.uses',
+        'sections.climate',
+        'sections.sectors',
+      ]
+    >;
+    slug: Schema.Attribute.UID & Schema.Attribute.Required;
+    specs: Schema.Attribute.Component<'shared.spec-item', true> &
+      Schema.Attribute.Required;
+    testimonials: Schema.Attribute.Component<
+      'blocks.testimonials-section',
+      false
+    >;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    types: Schema.Attribute.Component<'blocks.types-section', false> &
+      Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    whoWeAre: Schema.Attribute.Component<'blocks.who-we-are', false>;
+    why: Schema.Attribute.Component<'blocks.why-section', false> &
+      Schema.Attribute.Required;
   };
 }
 
@@ -994,7 +1171,10 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::global.global': ApiGlobalGlobal;
       'api::lead.lead': ApiLeadLead;
+      'api::navigation.navigation': ApiNavigationNavigation;
+      'api::service-page.service-page': ApiServicePageServicePage;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
