@@ -1,0 +1,143 @@
+{
+  "kind": "collectionType",
+  "collectionName": "hub_pages",
+  "info": {
+    "singularName": "hub-page",
+    "pluralName": "hub-pages",
+    "displayName": "Hub Page",
+    "description": "The outdoor-signage and indoor-signage category hub pages"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "slug": {
+      "type": "uid",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "metaTitle": {
+      "type": "string",
+      "required": true
+    },
+    "metaDescription": {
+      "type": "text",
+      "required": true
+    },
+    "heroFlag": {
+      "type": "string",
+      "required": true
+    },
+    "heroTitleLine1": {
+      "type": "string",
+      "required": true
+    },
+    "heroTitleLine2": {
+      "type": "string",
+      "required": true
+    },
+    "heroSub": {
+      "type": "text",
+      "required": true
+    },
+    "heroImg": {
+      "type": "string",
+      "required": true
+    },
+    "heroImgAlt": {
+      "type": "string",
+      "required": true
+    },
+    "heroChecklist": {
+      "type": "component",
+      "component": "shared.text-item",
+      "repeatable": true,
+      "required": true
+    },
+    "heroStats": {
+      "type": "component",
+      "component": "shared.stat",
+      "repeatable": true,
+      "required": true
+    },
+    "stats": {
+      "type": "component",
+      "component": "shared.stat",
+      "repeatable": true,
+      "required": true
+    },
+    "categories": {
+      "type": "component",
+      "component": "shared.category-item",
+      "repeatable": true,
+      "required": true
+    },
+    "whoWeAre": {
+      "type": "component",
+      "component": "blocks.who-we-are",
+      "repeatable": false,
+      "required": true
+    },
+    "featured": {
+      "type": "component",
+      "component": "shared.related-item",
+      "repeatable": true,
+      "required": true
+    },
+    "process": {
+      "type": "component",
+      "component": "blocks.process-section",
+      "repeatable": false,
+      "required": true
+    },
+    "why": {
+      "type": "component",
+      "component": "blocks.why-section",
+      "repeatable": false,
+      "required": true
+    },
+    "sections": {
+      "type": "dynamiczone",
+      "components": [
+        "sections.permits",
+        "sections.climate",
+        "sections.materials",
+        "sections.sectors"
+      ]
+    },
+    "testimonials": {
+      "type": "component",
+      "component": "blocks.testimonials-section",
+      "repeatable": false
+    },
+    "locations": {
+      "type": "component",
+      "component": "blocks.locations-section",
+      "repeatable": false
+    },
+    "faqCol1": {
+      "type": "component",
+      "component": "shared.faq-item",
+      "repeatable": true,
+      "required": true
+    },
+    "faqCol2": {
+      "type": "component",
+      "component": "shared.faq-item",
+      "repeatable": true,
+      "required": true
+    },
+    "ctaTitleLine1": {
+      "type": "string",
+      "required": true
+    },
+    "ctaTitleLine2": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

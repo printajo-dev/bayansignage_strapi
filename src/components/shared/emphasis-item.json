@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_shared_emphasis_items",
+  "info": {
+    "displayName": "Emphasis Item",
+    "icon": "bold"
+  },
+  "options": {},
+  "attributes": {
+    "strong": {
+      "type": "string",
+      "required": true
+    },
+    "rest": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

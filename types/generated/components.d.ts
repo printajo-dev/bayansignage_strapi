@@ -321,6 +321,48 @@ export interface SectionsUses extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedAreaTag extends Struct.ComponentSchema {
+  collectionName: 'components_shared_area_tags';
+  info: {
+    displayName: 'Area Tag';
+    icon: 'pinMap';
+  };
+  attributes: {
+    label: Schema.Attribute.String & Schema.Attribute.Required;
+    primary: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<false>;
+  };
+}
+
+export interface SharedCategoryItem extends Struct.ComponentSchema {
+  collectionName: 'components_shared_category_items';
+  info: {
+    displayName: 'Category Item';
+    icon: 'grid';
+  };
+  attributes: {
+    alt: Schema.Attribute.String & Schema.Attribute.Required;
+    count: Schema.Attribute.String;
+    href: Schema.Attribute.String & Schema.Attribute.Required;
+    img: Schema.Attribute.String & Schema.Attribute.Required;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    tag: Schema.Attribute.String;
+  };
+}
+
+export interface SharedClientLogo extends Struct.ComponentSchema {
+  collectionName: 'components_shared_client_logos';
+  info: {
+    displayName: 'Client Logo';
+    icon: 'briefcase';
+  };
+  attributes: {
+    domain: Schema.Attribute.String & Schema.Attribute.Required;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface SharedColorSwatchItem extends Struct.ComponentSchema {
   collectionName: 'components_shared_color_swatch_items';
   info: {
@@ -357,6 +399,22 @@ export interface SharedCompareRow extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedCtaAction extends Struct.ComponentSchema {
+  collectionName: 'components_shared_cta_actions';
+  info: {
+    displayName: 'CTA Action';
+    icon: 'cursor';
+  };
+  attributes: {
+    href: Schema.Attribute.String & Schema.Attribute.Required;
+    label: Schema.Attribute.String & Schema.Attribute.Required;
+    variant: Schema.Attribute.Enumeration<
+      ['primary', 'secondary', 'whatsapp']
+    > &
+      Schema.Attribute.Required;
+  };
+}
+
 export interface SharedDarkCalloutItem extends Struct.ComponentSchema {
   collectionName: 'components_shared_dark_callout_items';
   info: {
@@ -368,6 +426,18 @@ export interface SharedDarkCalloutItem extends Struct.ComponentSchema {
     lead: Schema.Attribute.String & Schema.Attribute.Required;
     num: Schema.Attribute.String;
     text: Schema.Attribute.Text & Schema.Attribute.Required;
+  };
+}
+
+export interface SharedEmphasisItem extends Struct.ComponentSchema {
+  collectionName: 'components_shared_emphasis_items';
+  info: {
+    displayName: 'Emphasis Item';
+    icon: 'bold';
+  };
+  attributes: {
+    rest: Schema.Attribute.Text & Schema.Attribute.Required;
+    strong: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -383,6 +453,18 @@ export interface SharedFaqItem extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedFilterTag extends Struct.ComponentSchema {
+  collectionName: 'components_shared_filter_tags';
+  info: {
+    displayName: 'Filter Tag';
+    icon: 'filter';
+  };
+  attributes: {
+    key: Schema.Attribute.String & Schema.Attribute.Required;
+    label: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface SharedHeightItem extends Struct.ComponentSchema {
   collectionName: 'components_shared_height_items';
   info: {
@@ -394,6 +476,24 @@ export interface SharedHeightItem extends Struct.ComponentSchema {
     desc: Schema.Attribute.Text;
     label: Schema.Attribute.String & Schema.Attribute.Required;
     m: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface SharedHeroSlide extends Struct.ComponentSchema {
+  collectionName: 'components_shared_hero_slides';
+  info: {
+    displayName: 'Hero Slide';
+    icon: 'picture';
+  };
+  attributes: {
+    actions: Schema.Attribute.Component<'shared.cta-action', true> &
+      Schema.Attribute.Required;
+    alt: Schema.Attribute.String & Schema.Attribute.Required;
+    body: Schema.Attribute.Text & Schema.Attribute.Required;
+    flag: Schema.Attribute.String & Schema.Attribute.Required;
+    img: Schema.Attribute.String & Schema.Attribute.Required;
+    titleLine1: Schema.Attribute.String & Schema.Attribute.Required;
+    titleLine2: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -465,6 +565,34 @@ export interface SharedNamedItem extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedOptionGroup extends Struct.ComponentSchema {
+  collectionName: 'components_shared_option_groups';
+  info: {
+    displayName: 'Option Group';
+    icon: 'bulletList';
+  };
+  attributes: {
+    label: Schema.Attribute.String & Schema.Attribute.Required;
+    options: Schema.Attribute.Component<'shared.text-item', true> &
+      Schema.Attribute.Required;
+  };
+}
+
+export interface SharedPortfolioItem extends Struct.ComponentSchema {
+  collectionName: 'components_shared_portfolio_items';
+  info: {
+    displayName: 'Portfolio Item';
+    icon: 'picture';
+  };
+  attributes: {
+    alt: Schema.Attribute.String & Schema.Attribute.Required;
+    cat: Schema.Attribute.String & Schema.Attribute.Required;
+    img: Schema.Attribute.String & Schema.Attribute.Required;
+    label: Schema.Attribute.String & Schema.Attribute.Required;
+    size: Schema.Attribute.String;
+  };
+}
+
 export interface SharedPricingItem extends Struct.ComponentSchema {
   collectionName: 'components_shared_pricing_items';
   info: {
@@ -481,6 +609,22 @@ export interface SharedPricingItem extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedQuoteMethod extends Struct.ComponentSchema {
+  collectionName: 'components_shared_quote_methods';
+  info: {
+    displayName: 'Quote Method';
+    icon: 'envelop';
+  };
+  attributes: {
+    href: Schema.Attribute.String & Schema.Attribute.Required;
+    label: Schema.Attribute.String & Schema.Attribute.Required;
+    sub: Schema.Attribute.String & Schema.Attribute.Required;
+    type: Schema.Attribute.Enumeration<['phone', 'whatsapp', 'email']> &
+      Schema.Attribute.Required;
+    value: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface SharedRelatedItem extends Struct.ComponentSchema {
   collectionName: 'components_shared_related_items';
   info: {
@@ -493,6 +637,22 @@ export interface SharedRelatedItem extends Struct.ComponentSchema {
     desc: Schema.Attribute.Text & Schema.Attribute.Required;
     href: Schema.Attribute.String & Schema.Attribute.Required;
     img: Schema.Attribute.String & Schema.Attribute.Required;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface SharedServiceCard extends Struct.ComponentSchema {
+  collectionName: 'components_shared_service_cards';
+  info: {
+    displayName: 'Service Card';
+    icon: 'layer';
+  };
+  attributes: {
+    alt: Schema.Attribute.String & Schema.Attribute.Required;
+    desc: Schema.Attribute.Text & Schema.Attribute.Required;
+    href: Schema.Attribute.String & Schema.Attribute.Required;
+    img: Schema.Attribute.String & Schema.Attribute.Required;
+    link: Schema.Attribute.String & Schema.Attribute.Required;
     name: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
@@ -520,6 +680,19 @@ export interface SharedStat extends Struct.ComponentSchema {
     label: Schema.Attribute.String & Schema.Attribute.Required;
     n: Schema.Attribute.String & Schema.Attribute.Required;
     suffix: Schema.Attribute.String;
+  };
+}
+
+export interface SharedStepItem extends Struct.ComponentSchema {
+  collectionName: 'components_shared_step_items';
+  info: {
+    displayName: 'Step Item';
+    icon: 'arrowRight';
+  };
+  attributes: {
+    desc: Schema.Attribute.Text & Schema.Attribute.Required;
+    idx: Schema.Attribute.String & Schema.Attribute.Required;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -563,6 +736,19 @@ export interface SharedTextItem extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedTileList extends Struct.ComponentSchema {
+  collectionName: 'components_shared_tile_lists';
+  info: {
+    displayName: 'Tile List';
+    icon: 'bulletList';
+  };
+  attributes: {
+    head: Schema.Attribute.String & Schema.Attribute.Required;
+    items: Schema.Attribute.Component<'shared.text-item', true> &
+      Schema.Attribute.Required;
+  };
+}
+
 export interface SharedTitleDesc extends Struct.ComponentSchema {
   collectionName: 'components_shared_title_descs';
   info: {
@@ -600,24 +786,37 @@ declare module '@strapi/strapi' {
       'sections.stat-callout': SectionsStatCallout;
       'sections.swatch-guide': SectionsSwatchGuide;
       'sections.uses': SectionsUses;
+      'shared.area-tag': SharedAreaTag;
+      'shared.category-item': SharedCategoryItem;
+      'shared.client-logo': SharedClientLogo;
       'shared.color-swatch-item': SharedColorSwatchItem;
       'shared.color-table-row': SharedColorTableRow;
       'shared.compare-row': SharedCompareRow;
+      'shared.cta-action': SharedCtaAction;
       'shared.dark-callout-item': SharedDarkCalloutItem;
+      'shared.emphasis-item': SharedEmphasisItem;
       'shared.faq-item': SharedFaqItem;
+      'shared.filter-tag': SharedFilterTag;
       'shared.height-item': SharedHeightItem;
+      'shared.hero-slide': SharedHeroSlide;
       'shared.location': SharedLocation;
       'shared.mega-column': SharedMegaColumn;
       'shared.mega-link': SharedMegaLink;
       'shared.mega-promo': SharedMegaPromo;
       'shared.named-item': SharedNamedItem;
+      'shared.option-group': SharedOptionGroup;
+      'shared.portfolio-item': SharedPortfolioItem;
       'shared.pricing-item': SharedPricingItem;
+      'shared.quote-method': SharedQuoteMethod;
       'shared.related-item': SharedRelatedItem;
+      'shared.service-card': SharedServiceCard;
       'shared.spec-item': SharedSpecItem;
       'shared.stat': SharedStat;
+      'shared.step-item': SharedStepItem;
       'shared.swatch-item': SharedSwatchItem;
       'shared.testimonial': SharedTestimonial;
       'shared.text-item': SharedTextItem;
+      'shared.tile-list': SharedTileList;
       'shared.title-desc': SharedTitleDesc;
     }
   }

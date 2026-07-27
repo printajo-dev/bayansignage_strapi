@@ -1,0 +1,88 @@
+{
+  "kind": "singleType",
+  "collectionName": "home_page",
+  "info": {
+    "singularName": "home-page",
+    "pluralName": "home-pages",
+    "displayName": "Home Page",
+    "description": "Content for the homepage sections (hero slider, services, portfolio, testimonials, etc.)"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heroSlides": {
+      "type": "component",
+      "component": "shared.hero-slide",
+      "repeatable": true,
+      "required": true
+    },
+    "stats": {
+      "type": "component",
+      "component": "shared.stat",
+      "repeatable": true,
+      "required": true
+    },
+    "whoPoints": {
+      "type": "component",
+      "component": "shared.emphasis-item",
+      "repeatable": true,
+      "required": true
+    },
+    "whoBadges": {
+      "type": "component",
+      "component": "shared.stat",
+      "repeatable": true,
+      "required": true
+    },
+    "services": {
+      "type": "component",
+      "component": "shared.service-card",
+      "repeatable": true,
+      "required": true
+    },
+    "processSteps": {
+      "type": "component",
+      "component": "shared.step-item",
+      "repeatable": true,
+      "required": true
+    },
+    "factoryItems": {
+      "type": "component",
+      "component": "shared.named-item",
+      "repeatable": true,
+      "required": true
+    },
+    "portfolioFilters": {
+      "type": "component",
+      "component": "shared.filter-tag",
+      "repeatable": true,
+      "required": true
+    },
+    "portfolioItems": {
+      "type": "component",
+      "component": "shared.portfolio-item",
+      "repeatable": true,
+      "required": true
+    },
+    "whyItems": {
+      "type": "component",
+      "component": "shared.title-desc",
+      "repeatable": true,
+      "required": true
+    },
+    "clients": {
+      "type": "component",
+      "component": "shared.client-logo",
+      "repeatable": true,
+      "required": true
+    },
+    "testimonials": {
+      "type": "component",
+      "component": "shared.testimonial",
+      "repeatable": true,
+      "required": true
+    }
+  }
+}

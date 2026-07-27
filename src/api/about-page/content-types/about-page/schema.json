@@ -1,0 +1,76 @@
+{
+  "kind": "singleType",
+  "collectionName": "about_page",
+  "info": {
+    "singularName": "about-page",
+    "pluralName": "about-pages",
+    "displayName": "About Page",
+    "description": "Content for the About Us page"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "stamps": {
+      "type": "component",
+      "component": "shared.stat",
+      "repeatable": true,
+      "required": true
+    },
+    "benefits": {
+      "type": "component",
+      "component": "shared.title-desc",
+      "repeatable": true,
+      "required": true
+    },
+    "equipment": {
+      "type": "component",
+      "component": "shared.named-item",
+      "repeatable": true,
+      "required": true
+    },
+    "team": {
+      "type": "component",
+      "component": "shared.title-desc",
+      "repeatable": true,
+      "required": true
+    },
+    "serviceTiles": {
+      "type": "component",
+      "component": "shared.tile-list",
+      "repeatable": true,
+      "required": true
+    },
+    "permitAuthorities": {
+      "type": "component",
+      "component": "shared.named-item",
+      "repeatable": true,
+      "required": true
+    },
+    "processRows": {
+      "type": "component",
+      "component": "shared.title-desc",
+      "repeatable": true,
+      "required": true
+    },
+    "whyChoose": {
+      "type": "component",
+      "component": "shared.title-desc",
+      "repeatable": true,
+      "required": true
+    },
+    "faq": {
+      "type": "component",
+      "component": "shared.faq-item",
+      "repeatable": true,
+      "required": true
+    },
+    "serviceAreas": {
+      "type": "component",
+      "component": "shared.area-tag",
+      "repeatable": true,
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "kind": "singleType",
+  "collectionName": "quote_page",
+  "info": {
+    "singularName": "quote-page",
+    "pluralName": "quote-pages",
+    "displayName": "Quote Page",
+    "description": "Content for the Get a Quote page and the shared QuoteForm dropdown options"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "methods": {
+      "type": "component",
+      "component": "shared.quote-method",
+      "repeatable": true,
+      "required": true
+    },
+    "promises": {
+      "type": "component",
+      "component": "shared.text-item",
+      "repeatable": true,
+      "required": true
+    },
+    "stats": {
+      "type": "component",
+      "component": "shared.stat",
+      "repeatable": true,
+      "required": true
+    },
+    "signTypeGroups": {
+      "type": "component",
+      "component": "shared.option-group",
+      "repeatable": true,
+      "required": true
+    },
+    "signTypeExtra": {
+      "type": "component",
+      "component": "shared.text-item",
+      "repeatable": true,
+      "required": true
+    },
+    "locations": {
+      "type": "component",
+      "component": "shared.text-item",
+      "repeatable": true,
+      "required": true
+    },
+    "quantities": {
+      "type": "component",
+      "component": "shared.text-item",
+      "repeatable": true,
+      "required": true
+    },
+    "budgets": {
+      "type": "component",
+      "component": "shared.text-item",
+      "repeatable": true,
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_shared_step_items",
+  "info": {
+    "displayName": "Step Item",
+    "icon": "arrowRight"
+  },
+  "options": {},
+  "attributes": {
+    "idx": {
+      "type": "string",
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "desc": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

@@ -5,6 +5,10 @@ const PUBLIC_PERMISSIONS: Record<string, string[]> = {
   global: ['find'],
   navigation: ['find'],
   'service-page': ['find', 'findOne'],
+  'home-page': ['find'],
+  'about-page': ['find'],
+  'quote-page': ['find'],
+  'hub-page': ['find', 'findOne'],
 };
 
 async function setPublicPermissions(strapi: Core.Strapi) {

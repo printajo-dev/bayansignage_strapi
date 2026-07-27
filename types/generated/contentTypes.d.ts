@@ -441,6 +441,54 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAboutPageAboutPage extends Struct.SingleTypeSchema {
+  collectionName: 'about_page';
+  info: {
+    description: 'Content for the About Us page';
+    displayName: 'About Page';
+    pluralName: 'about-pages';
+    singularName: 'about-page';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    benefits: Schema.Attribute.Component<'shared.title-desc', true> &
+      Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    equipment: Schema.Attribute.Component<'shared.named-item', true> &
+      Schema.Attribute.Required;
+    faq: Schema.Attribute.Component<'shared.faq-item', true> &
+      Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::about-page.about-page'
+    > &
+      Schema.Attribute.Private;
+    permitAuthorities: Schema.Attribute.Component<'shared.named-item', true> &
+      Schema.Attribute.Required;
+    processRows: Schema.Attribute.Component<'shared.title-desc', true> &
+      Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    serviceAreas: Schema.Attribute.Component<'shared.area-tag', true> &
+      Schema.Attribute.Required;
+    serviceTiles: Schema.Attribute.Component<'shared.tile-list', true> &
+      Schema.Attribute.Required;
+    stamps: Schema.Attribute.Component<'shared.stat', true> &
+      Schema.Attribute.Required;
+    team: Schema.Attribute.Component<'shared.title-desc', true> &
+      Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    whyChoose: Schema.Attribute.Component<'shared.title-desc', true> &
+      Schema.Attribute.Required;
+  };
+}
+
 export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   collectionName: 'global';
   info: {
@@ -476,6 +524,131 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     whatsappNumber: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
+  collectionName: 'home_page';
+  info: {
+    description: 'Content for the homepage sections (hero slider, services, portfolio, testimonials, etc.)';
+    displayName: 'Home Page';
+    pluralName: 'home-pages';
+    singularName: 'home-page';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    clients: Schema.Attribute.Component<'shared.client-logo', true> &
+      Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    factoryItems: Schema.Attribute.Component<'shared.named-item', true> &
+      Schema.Attribute.Required;
+    heroSlides: Schema.Attribute.Component<'shared.hero-slide', true> &
+      Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::home-page.home-page'
+    > &
+      Schema.Attribute.Private;
+    portfolioFilters: Schema.Attribute.Component<'shared.filter-tag', true> &
+      Schema.Attribute.Required;
+    portfolioItems: Schema.Attribute.Component<'shared.portfolio-item', true> &
+      Schema.Attribute.Required;
+    processSteps: Schema.Attribute.Component<'shared.step-item', true> &
+      Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    services: Schema.Attribute.Component<'shared.service-card', true> &
+      Schema.Attribute.Required;
+    stats: Schema.Attribute.Component<'shared.stat', true> &
+      Schema.Attribute.Required;
+    testimonials: Schema.Attribute.Component<'shared.testimonial', true> &
+      Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    whoBadges: Schema.Attribute.Component<'shared.stat', true> &
+      Schema.Attribute.Required;
+    whoPoints: Schema.Attribute.Component<'shared.emphasis-item', true> &
+      Schema.Attribute.Required;
+    whyItems: Schema.Attribute.Component<'shared.title-desc', true> &
+      Schema.Attribute.Required;
+  };
+}
+
+export interface ApiHubPageHubPage extends Struct.CollectionTypeSchema {
+  collectionName: 'hub_pages';
+  info: {
+    description: 'The outdoor-signage and indoor-signage category hub pages';
+    displayName: 'Hub Page';
+    pluralName: 'hub-pages';
+    singularName: 'hub-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    categories: Schema.Attribute.Component<'shared.category-item', true> &
+      Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    ctaTitleLine1: Schema.Attribute.String & Schema.Attribute.Required;
+    ctaTitleLine2: Schema.Attribute.String & Schema.Attribute.Required;
+    faqCol1: Schema.Attribute.Component<'shared.faq-item', true> &
+      Schema.Attribute.Required;
+    faqCol2: Schema.Attribute.Component<'shared.faq-item', true> &
+      Schema.Attribute.Required;
+    featured: Schema.Attribute.Component<'shared.related-item', true> &
+      Schema.Attribute.Required;
+    heroChecklist: Schema.Attribute.Component<'shared.text-item', true> &
+      Schema.Attribute.Required;
+    heroFlag: Schema.Attribute.String & Schema.Attribute.Required;
+    heroImg: Schema.Attribute.String & Schema.Attribute.Required;
+    heroImgAlt: Schema.Attribute.String & Schema.Attribute.Required;
+    heroStats: Schema.Attribute.Component<'shared.stat', true> &
+      Schema.Attribute.Required;
+    heroSub: Schema.Attribute.Text & Schema.Attribute.Required;
+    heroTitleLine1: Schema.Attribute.String & Schema.Attribute.Required;
+    heroTitleLine2: Schema.Attribute.String & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::hub-page.hub-page'
+    > &
+      Schema.Attribute.Private;
+    locations: Schema.Attribute.Component<'blocks.locations-section', false>;
+    metaDescription: Schema.Attribute.Text & Schema.Attribute.Required;
+    metaTitle: Schema.Attribute.String & Schema.Attribute.Required;
+    process: Schema.Attribute.Component<'blocks.process-section', false> &
+      Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    sections: Schema.Attribute.DynamicZone<
+      [
+        'sections.permits',
+        'sections.climate',
+        'sections.materials',
+        'sections.sectors',
+      ]
+    >;
+    slug: Schema.Attribute.UID & Schema.Attribute.Required;
+    stats: Schema.Attribute.Component<'shared.stat', true> &
+      Schema.Attribute.Required;
+    testimonials: Schema.Attribute.Component<
+      'blocks.testimonials-section',
+      false
+    >;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    whoWeAre: Schema.Attribute.Component<'blocks.who-we-are', false> &
+      Schema.Attribute.Required;
+    why: Schema.Attribute.Component<'blocks.why-section', false> &
+      Schema.Attribute.Required;
   };
 }
 
@@ -564,6 +737,50 @@ export interface ApiNavigationNavigation extends Struct.SingleTypeSchema {
     outdoorPromo: Schema.Attribute.Component<'shared.mega-promo', false> &
       Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiQuotePageQuotePage extends Struct.SingleTypeSchema {
+  collectionName: 'quote_page';
+  info: {
+    description: 'Content for the Get a Quote page and the shared QuoteForm dropdown options';
+    displayName: 'Quote Page';
+    pluralName: 'quote-pages';
+    singularName: 'quote-page';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    budgets: Schema.Attribute.Component<'shared.text-item', true> &
+      Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::quote-page.quote-page'
+    > &
+      Schema.Attribute.Private;
+    locations: Schema.Attribute.Component<'shared.text-item', true> &
+      Schema.Attribute.Required;
+    methods: Schema.Attribute.Component<'shared.quote-method', true> &
+      Schema.Attribute.Required;
+    promises: Schema.Attribute.Component<'shared.text-item', true> &
+      Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    quantities: Schema.Attribute.Component<'shared.text-item', true> &
+      Schema.Attribute.Required;
+    signTypeExtra: Schema.Attribute.Component<'shared.text-item', true> &
+      Schema.Attribute.Required;
+    signTypeGroups: Schema.Attribute.Component<'shared.option-group', true> &
+      Schema.Attribute.Required;
+    stats: Schema.Attribute.Component<'shared.stat', true> &
+      Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1171,9 +1388,13 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::about-page.about-page': ApiAboutPageAboutPage;
       'api::global.global': ApiGlobalGlobal;
+      'api::home-page.home-page': ApiHomePageHomePage;
+      'api::hub-page.hub-page': ApiHubPageHubPage;
       'api::lead.lead': ApiLeadLead;
       'api::navigation.navigation': ApiNavigationNavigation;
+      'api::quote-page.quote-page': ApiQuotePageQuotePage;
       'api::service-page.service-page': ApiServicePageServicePage;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

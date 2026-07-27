@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_shared_service_cards",
+  "info": {
+    "displayName": "Service Card",
+    "icon": "layer"
+  },
+  "options": {},
+  "attributes": {
+    "href": {
+      "type": "string",
+      "required": true
+    },
+    "img": {
+      "type": "string",
+      "required": true
+    },
+    "alt": {
+      "type": "string",
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "desc": {
+      "type": "text",
+      "required": true
+    },
+    "link": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

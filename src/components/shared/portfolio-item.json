@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_shared_portfolio_items",
+  "info": {
+    "displayName": "Portfolio Item",
+    "icon": "picture"
+  },
+  "options": {},
+  "attributes": {
+    "img": {
+      "type": "string",
+      "required": true
+    },
+    "alt": {
+      "type": "string",
+      "required": true
+    },
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "cat": {
+      "type": "string",
+      "required": true
+    },
+    "size": {
+      "type": "string"
+    }
+  }
+}

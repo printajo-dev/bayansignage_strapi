@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_shared_quote_methods",
+  "info": {
+    "displayName": "Quote Method",
+    "icon": "envelop"
+  },
+  "options": {},
+  "attributes": {
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "phone",
+        "whatsapp",
+        "email"
+      ],
+      "required": true
+    },
+    "href": {
+      "type": "string",
+      "required": true
+    },
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "value": {
+      "type": "string",
+      "required": true
+    },
+    "sub": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

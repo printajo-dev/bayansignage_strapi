@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_shared_option_groups",
+  "info": {
+    "displayName": "Option Group",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "options": {
+      "type": "component",
+      "component": "shared.text-item",
+      "repeatable": true,
+      "required": true
+    }
+  }
+}

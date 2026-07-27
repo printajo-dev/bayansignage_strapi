@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_shared_filter_tags",
+  "info": {
+    "displayName": "Filter Tag",
+    "icon": "filter"
+  },
+  "options": {},
+  "attributes": {
+    "key": {
+      "type": "string",
+      "required": true
+    },
+    "label": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
