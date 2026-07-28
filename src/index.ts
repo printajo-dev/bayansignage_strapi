@@ -9,6 +9,7 @@ const PUBLIC_PERMISSIONS: Record<string, string[]> = {
   'about-page': ['find'],
   'quote-page': ['find'],
   'hub-page': ['find', 'findOne'],
+  'blog-post': ['find', 'findOne'],
 };
 
 async function setPublicPermissions(strapi: Core.Strapi) {
