@@ -358,7 +358,8 @@ export interface SharedClientLogo extends Struct.ComponentSchema {
     icon: 'briefcase';
   };
   attributes: {
-    domain: Schema.Attribute.String & Schema.Attribute.Required;
+    domain: Schema.Attribute.String;
+    img: Schema.Attribute.String;
     name: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }

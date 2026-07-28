@@ -7,12 +7,14 @@
   "options": {},
   "attributes": {
     "domain": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "name": {
       "type": "string",
       "required": true
+    },
+    "img": {
+      "type": "string"
     }
   }
 }
