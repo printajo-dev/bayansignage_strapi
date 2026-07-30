@@ -15,7 +15,10 @@ export async function revalidateFrontend(tags: string | string[]) {
   const tagList = Array.isArray(tags) ? tags : [tags];
 
   try {
-    const res = await fetch(`${url}/api/revalidate?secret=${encodeURIComponent(secret)}`, {
+    // Trailing slash avoids a 308 redirect (the frontend has trailingSlash:
+    // true) that some Node fetch/undici versions don't reliably re-send the
+    // POST body across, which silently dropped revalidation for some tags.
+    const res = await fetch(`${url}/api/revalidate/?secret=${encodeURIComponent(secret)}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ tags: tagList }),
