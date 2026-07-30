@@ -13,7 +13,6 @@ export default ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Middlewar
         origin: allowedOrigins,
       },
     },
-    'strapi::poweredBy',
     'strapi::query',
     'strapi::body',
     'strapi::session',
