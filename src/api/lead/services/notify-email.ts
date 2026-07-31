@@ -32,9 +32,11 @@ export async function sendLeadNotificationEmail(lead: LeadLike): Promise<{ sent:
       auth: { user: BREVO_SMTP_USER, pass: BREVO_SMTP_PASS },
     });
 
+    const recipients = LEAD_NOTIFY_EMAIL.split(',').map((e) => e.trim()).filter(Boolean);
+
     await transporter.sendMail({
       from: LEAD_NOTIFY_FROM || `"Bayan Signage Website" <${BREVO_SMTP_USER}>`,
-      to: LEAD_NOTIFY_EMAIL,
+      to: recipients,
       replyTo: lead.email,
       subject: `New lead: ${lead.name}${lead.serviceInterest ? ` — ${lead.serviceInterest}` : ''}`,
       text: [
