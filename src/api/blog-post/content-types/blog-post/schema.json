@@ -30,7 +30,8 @@
     },
     "coverImage": {
       "type": "string",
-      "required": true
+      "required": true,
+      "customField": "global::image-picker"
     },
     "coverImageAlt": {
       "type": "string",

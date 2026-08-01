@@ -18,7 +18,8 @@
       "type": "string"
     },
     "img": {
-      "type": "string"
+      "type": "string",
+      "customField": "global::image-picker"
     },
     "alt": {
       "type": "string"

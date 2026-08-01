@@ -548,8 +548,10 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
       Schema.Attribute.Private;
     email: Schema.Attribute.Email & Schema.Attribute.Required;
     facebook: Schema.Attribute.String;
+    gtmId: Schema.Attribute.String;
     hours: Schema.Attribute.String & Schema.Attribute.Required;
     instagram: Schema.Attribute.String;
+    leadNotifyEmails: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -648,7 +650,9 @@ export interface ApiHubPageHubPage extends Struct.CollectionTypeSchema {
     heroChecklist: Schema.Attribute.Component<'shared.text-item', true> &
       Schema.Attribute.Required;
     heroFlag: Schema.Attribute.String & Schema.Attribute.Required;
-    heroImg: Schema.Attribute.String & Schema.Attribute.Required;
+    heroImg: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.CustomField<'global::image-picker'>;
     heroImgAlt: Schema.Attribute.String & Schema.Attribute.Required;
     heroStats: Schema.Attribute.Component<'shared.stat', true> &
       Schema.Attribute.Required;
@@ -851,7 +855,9 @@ export interface ApiServicePageServicePage extends Struct.CollectionTypeSchema {
       Schema.Attribute.Required;
     heroChecklist: Schema.Attribute.Component<'shared.text-item', true>;
     heroFlag: Schema.Attribute.String & Schema.Attribute.Required;
-    heroImg: Schema.Attribute.String & Schema.Attribute.Required;
+    heroImg: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.CustomField<'global::image-picker'>;
     heroImgAlt: Schema.Attribute.String & Schema.Attribute.Required;
     heroStats: Schema.Attribute.Component<'shared.stat', true> &
       Schema.Attribute.Required;

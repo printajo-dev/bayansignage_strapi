@@ -32,7 +32,8 @@
     },
     "img": {
       "type": "string",
-      "required": true
+      "required": true,
+      "customField": "global::image-picker"
     },
     "imgAlt": {
       "type": "string",

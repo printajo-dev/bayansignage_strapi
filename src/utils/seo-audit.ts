@@ -1,4 +1,5 @@
 import nodemailer from 'nodemailer';
+import { getNotifyRecipients } from './notify-recipients';
 
 /**
  * Weekly self-audit: crawls the live site the same way a search engine
@@ -219,12 +220,13 @@ function formatReport(report: SeoAuditReport): string {
 
 export async function runSeoAuditAndEmail(): Promise<void> {
   const report = await runSeoAudit();
-  const { BREVO_SMTP_HOST, BREVO_SMTP_PORT, BREVO_SMTP_USER, BREVO_SMTP_PASS, LEAD_NOTIFY_EMAIL, LEAD_NOTIFY_FROM } = process.env;
+  const { BREVO_SMTP_HOST, BREVO_SMTP_PORT, BREVO_SMTP_USER, BREVO_SMTP_PASS, LEAD_NOTIFY_FROM } = process.env;
+  const recipients = await getNotifyRecipients();
 
   strapi.log.info(`[seo-audit] pages=${report.pagesChecked} brokenPages=${report.brokenPages.length} brokenImages=${report.brokenImages.length} brokenLinks=${report.brokenLinks.length} autoFixed=${report.autoFixed.length}`);
 
-  if (!BREVO_SMTP_HOST || !BREVO_SMTP_USER || !BREVO_SMTP_PASS || !LEAD_NOTIFY_EMAIL) {
-    strapi.log.warn('[seo-audit] Brevo SMTP env vars not configured -- report logged only, no email sent');
+  if (!BREVO_SMTP_HOST || !BREVO_SMTP_USER || !BREVO_SMTP_PASS || recipients.length === 0) {
+    strapi.log.warn('[seo-audit] Brevo SMTP not configured or no notify recipients set -- report logged only, no email sent');
     return;
   }
 
@@ -239,7 +241,7 @@ export async function runSeoAuditAndEmail(): Promise<void> {
 
   await transporter.sendMail({
     from: LEAD_NOTIFY_FROM || `"Bayan Signage Website" <${BREVO_SMTP_USER}>`,
-    to: LEAD_NOTIFY_EMAIL.split(',').map((e) => e.trim()).filter(Boolean),
+    to: recipients,
     subject: `Weekly SEO audit — ${hasIssues ? 'issues found' : 'all clear'} — bayansignage.com`,
     text: formatReport(report),
   });

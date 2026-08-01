@@ -14,7 +14,8 @@
       "required": true
     },
     "img": {
-      "type": "string"
+      "type": "string",
+      "customField": "global::image-picker"
     }
   }
 }

@@ -56,7 +56,8 @@
     },
     "heroImg": {
       "type": "string",
-      "required": true
+      "required": true,
+      "customField": "global::image-picker"
     },
     "heroImgAlt": {
       "type": "string",

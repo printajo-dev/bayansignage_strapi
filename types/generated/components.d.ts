@@ -64,7 +64,9 @@ export interface BlocksWhoWeAre extends Struct.ComponentSchema {
   attributes: {
     badges: Schema.Attribute.Component<'shared.stat', true>;
     checklist: Schema.Attribute.Component<'shared.text-item', true>;
-    img: Schema.Attribute.String & Schema.Attribute.Required;
+    img: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.CustomField<'global::image-picker'>;
     imgAlt: Schema.Attribute.String & Schema.Attribute.Required;
     label: Schema.Attribute.String & Schema.Attribute.Required;
     paragraphs: Schema.Attribute.Component<'shared.text-item', true>;
@@ -345,7 +347,9 @@ export interface SharedCategoryItem extends Struct.ComponentSchema {
     alt: Schema.Attribute.String & Schema.Attribute.Required;
     count: Schema.Attribute.String;
     href: Schema.Attribute.String & Schema.Attribute.Required;
-    img: Schema.Attribute.String & Schema.Attribute.Required;
+    img: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.CustomField<'global::image-picker'>;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     tag: Schema.Attribute.String;
   };
@@ -359,7 +363,8 @@ export interface SharedClientLogo extends Struct.ComponentSchema {
   };
   attributes: {
     domain: Schema.Attribute.String;
-    img: Schema.Attribute.String;
+    img: Schema.Attribute.String &
+      Schema.Attribute.CustomField<'global::image-picker'>;
     name: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
@@ -492,7 +497,9 @@ export interface SharedHeroSlide extends Struct.ComponentSchema {
     alt: Schema.Attribute.String & Schema.Attribute.Required;
     body: Schema.Attribute.Text & Schema.Attribute.Required;
     flag: Schema.Attribute.String & Schema.Attribute.Required;
-    img: Schema.Attribute.String & Schema.Attribute.Required;
+    img: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.CustomField<'global::image-picker'>;
     titleLine1: Schema.Attribute.String & Schema.Attribute.Required;
     titleLine2: Schema.Attribute.String & Schema.Attribute.Required;
   };
@@ -560,7 +567,8 @@ export interface SharedNamedItem extends Struct.ComponentSchema {
   attributes: {
     alt: Schema.Attribute.String;
     desc: Schema.Attribute.Text & Schema.Attribute.Required;
-    img: Schema.Attribute.String;
+    img: Schema.Attribute.String &
+      Schema.Attribute.CustomField<'global::image-picker'>;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     tag: Schema.Attribute.String;
   };
@@ -588,7 +596,9 @@ export interface SharedPortfolioItem extends Struct.ComponentSchema {
   attributes: {
     alt: Schema.Attribute.String & Schema.Attribute.Required;
     cat: Schema.Attribute.String & Schema.Attribute.Required;
-    img: Schema.Attribute.String & Schema.Attribute.Required;
+    img: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.CustomField<'global::image-picker'>;
     label: Schema.Attribute.String & Schema.Attribute.Required;
     size: Schema.Attribute.String;
   };
@@ -637,7 +647,9 @@ export interface SharedRelatedItem extends Struct.ComponentSchema {
     cat: Schema.Attribute.String & Schema.Attribute.Required;
     desc: Schema.Attribute.Text & Schema.Attribute.Required;
     href: Schema.Attribute.String & Schema.Attribute.Required;
-    img: Schema.Attribute.String & Schema.Attribute.Required;
+    img: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.CustomField<'global::image-picker'>;
     name: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
@@ -652,7 +664,9 @@ export interface SharedServiceCard extends Struct.ComponentSchema {
     alt: Schema.Attribute.String & Schema.Attribute.Required;
     desc: Schema.Attribute.Text & Schema.Attribute.Required;
     href: Schema.Attribute.String & Schema.Attribute.Required;
-    img: Schema.Attribute.String & Schema.Attribute.Required;
+    img: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.CustomField<'global::image-picker'>;
     link: Schema.Attribute.String & Schema.Attribute.Required;
     name: Schema.Attribute.String & Schema.Attribute.Required;
   };

@@ -49,6 +49,14 @@
     "siteOrigin": {
       "type": "string",
       "required": true
+    },
+    "leadNotifyEmails": {
+      "type": "string",
+      "description": "Comma-separated list of emails to notify when a quote/contact form is submitted (e.g. admin@..., sales@...). Falls back to the LEAD_NOTIFY_EMAIL env var if left blank."
+    },
+    "gtmId": {
+      "type": "string",
+      "description": "Google Tag Manager container ID (e.g. GTM-XXXXXXX). Leave blank to not load GTM at all."
     }
   }
 }
