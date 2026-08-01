@@ -57,6 +57,15 @@
     "gtmId": {
       "type": "string",
       "description": "Google Tag Manager container ID (e.g. GTM-XXXXXXX). Leave blank to not load GTM at all."
+    },
+    "turnstileSiteKey": {
+      "type": "string",
+      "description": "Cloudflare Turnstile site key (public, safe to expose to the browser). From Cloudflare dashboard > Turnstile > Add site. Leave blank to skip Turnstile on the forms entirely."
+    },
+    "turnstileSecretKey": {
+      "type": "string",
+      "private": true,
+      "description": "Cloudflare Turnstile secret key. Private: never returned by the public API, only readable from backend code. Must be set together with the site key above."
     }
   }
 }

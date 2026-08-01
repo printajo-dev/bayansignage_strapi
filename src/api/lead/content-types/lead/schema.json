@@ -51,6 +51,10 @@
     "emailNotified": {
       "type": "boolean",
       "default": false
+    },
+    "customerNotified": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

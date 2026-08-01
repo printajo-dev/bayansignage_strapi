@@ -1,4 +1,4 @@
-import { sendLeadNotificationEmail } from '../../services/notify-email';
+import { sendLeadNotificationEmail, sendCustomerConfirmationEmail } from '../../services/notify-email';
 import { syncLeadToPerfex } from '../../services/perfex-sync';
 
 export default {
@@ -15,8 +15,9 @@ export default {
       formName?: string | null;
     };
 
-    const [emailResult, perfexResult] = await Promise.all([
+    const [emailResult, customerResult, perfexResult] = await Promise.all([
       sendLeadNotificationEmail(lead),
+      sendCustomerConfirmationEmail(lead),
       syncLeadToPerfex(lead),
     ]);
 
@@ -24,6 +25,7 @@ export default {
       documentId: lead.documentId,
       data: {
         emailNotified: emailResult.sent,
+        customerNotified: customerResult.sent,
         crmSyncStatus: perfexResult.status,
         crmSyncError: perfexResult.error ?? undefined,
       },
@@ -31,6 +33,9 @@ export default {
 
     if (!emailResult.sent && emailResult.error) {
       strapi.log.warn(`[lead ${lead.id}] email notification skipped: ${emailResult.error}`);
+    }
+    if (!customerResult.sent && customerResult.error) {
+      strapi.log.warn(`[lead ${lead.id}] customer confirmation skipped: ${customerResult.error}`);
     }
     if (perfexResult.status === 'failed') {
       strapi.log.error(`[lead ${lead.id}] Perfex sync failed: ${perfexResult.error}`);

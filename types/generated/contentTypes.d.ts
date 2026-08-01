@@ -506,7 +506,9 @@ export interface ApiBlogPostBlogPost extends Struct.CollectionTypeSchema {
       Schema.Attribute.DefaultTo<'Bayan Signage'>;
     category: Schema.Attribute.String;
     content: Schema.Attribute.RichText & Schema.Attribute.Required;
-    coverImage: Schema.Attribute.String & Schema.Attribute.Required;
+    coverImage: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.CustomField<'global::image-picker'>;
     coverImageAlt: Schema.Attribute.String & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -563,6 +565,8 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
     phoneHref: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     siteOrigin: Schema.Attribute.String & Schema.Attribute.Required;
+    turnstileSecretKey: Schema.Attribute.String & Schema.Attribute.Private;
+    turnstileSiteKey: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -717,6 +721,8 @@ export interface ApiLeadLead extends Struct.CollectionTypeSchema {
       ['pending', 'synced', 'failed', 'skipped']
     > &
       Schema.Attribute.DefaultTo<'pending'>;
+    customerNotified: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<false>;
     email: Schema.Attribute.Email & Schema.Attribute.Required;
     emailNotified: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     formName: Schema.Attribute.String;
